@@ -18,6 +18,11 @@ public class NWDTest {
 		}
 		
 		@Test(expected = IllegalArgumentException.class)
+		public void Check6(){
+			assertEquals(7, najw.nwd(7, -7));
+		}
+		
+		@Test(expected = IllegalArgumentException.class)
 		public void Check3(){
 			assertEquals(0, najw.nwd(0, 0));
 		}
@@ -25,5 +30,10 @@ public class NWDTest {
 		@Test
 		public void Check4(){
 			assertEquals(2, najw.nwd(2, 0));
+		}
+		
+		@Test
+		public void Check5(){
+			assertEquals(2, najw.nwd(0, 2));
 		}
 }
