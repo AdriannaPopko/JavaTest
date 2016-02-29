@@ -1,55 +1,37 @@
-target/
-*.zip
-*.tzg
-*.tar
-log
 
-.metadata
-bin/
-tmp/
-*.tmp
+# use glob syntax.
+syntax: glob
+*.class
+*~
 *.bak
-*.swp
-*~.nib
-local.properties
+*.old
+*.pdf
+
+# logs
+*.log
+
+# eclipse conf file
+.settings
 .settings/
-.loadpath
-
-# Eclipse Core
-.project
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
-.cproject
-
-# JDT-specific (Eclipse Java Development Tools)
 .classpath
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
+.project
 .springBeans
 
-# Code Recommenders
-.recommenders/
+
+# building
+target
+tmp*
+dist
+test-output
+
+# other scm
+.svn
+.CVS
+.hg*
+
+# switch to regexp syntax.
+#  syntax: regexp
+#  ^\.pc/
+
+*.zip
+*.tar
