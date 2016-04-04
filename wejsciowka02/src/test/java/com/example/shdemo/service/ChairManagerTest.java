@@ -28,6 +28,7 @@ public class ChairManagerTest {
 	private ChairManager chairManager;
 	private IList mock;
 	private Chair chair = new Chair(name1,price1);
+	private Chair chair2 = new Chair(name2,price2);
 	private List<Chair> chairs = new ArrayList<Chair>();
 	
 	@Before
@@ -57,6 +58,7 @@ public class ChairManagerTest {
 	@Test
 	public void checkGetAll() {
 		chairs.add(chair);
+		chairs.add(chair2);		
 		expect(mock.getAll()).andReturn(chairs);
 		replay(mock);
 		assertEquals(chairs, chairManager.getAllChairs());
