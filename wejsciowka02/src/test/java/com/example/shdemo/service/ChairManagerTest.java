@@ -19,9 +19,9 @@ public class ChairManagerTest {
 
 
 	String name1="Krzesło biurowe";
-	float price1=40;
+	double price1=140;
 	String name2="Krzesło bujane";
-	float price2=200;
+	double price2=200;
 	final double DELTA = 1e-15;
 	
 	private ChairManager chairManager;
