@@ -3,10 +3,10 @@ package wejsciowka01.example.shdemo.domain;
 public class Chair {
 	
 	public String chairName;
-	public float chairPrice;
+	public double chairPrice;
 	public boolean chair_on_stock;
 	
-	public Chair(String chairName, float chairPrice)
+	public Chair(String chairName, double chairPrice)
 	{
 		this.chairName = chairName;
 		this.chairPrice = chairPrice;
@@ -22,11 +22,11 @@ public class Chair {
 		this.chairName = chairName;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return chairPrice;
 	}
 
-	public void setPrice(float chairPrice) {
+	public void setPrice(double chairPrice) {
 		this.chairPrice = chairPrice;
 	}
 
