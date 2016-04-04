@@ -4,9 +4,11 @@ import wejsciowka01.example.shdemo.domain.Chair;
 import wejsciowka01.example.shdemo.service.ChairManager;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
@@ -18,16 +20,15 @@ import org.junit.Test;
 public class ChairManagerTest {
 
 
-	String name1="Krzesło biurowe";
-	double price1=140;
-	String name2="Krzesło bujane";
-	double price2=200;
-	final double DELTA = 1e-15;
+	private static final String name1="Krzesło biurowe";
+	private static final double price1=140;
+	private static final String name2="Krzesło bujane";
+	private static final double price2=200;
 	
 	private ChairManager chairManager;
 	private IList mock;
 	private Chair chair = new Chair(name1,price1);
-	private List<Chair> chairs;
+	private List<Chair> chairs = new ArrayList<Chair>();
 	
 	@Before
 	public void setUp() {
@@ -55,6 +56,7 @@ public class ChairManagerTest {
 	
 	@Test
 	public void checkGetAll() {
+		chairs.add(chair);
 		expect(mock.getAll()).andReturn(chairs);
 		replay(mock);
 		assertEquals(chairs, chairManager.getAllChairs());
