@@ -1,6 +1,5 @@
 package com.example.shdemo.service;
 import wejsciowka01.example.shdemo.domain.ChairManager;
-import wejsciowka01.example.shdemo.domain.IList;
 import wejsciowka01.example.shdemo.domain.Chair;
 
 import org.jbehave.core.configuration.Configuration;

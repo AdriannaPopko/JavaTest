@@ -1,12 +1,15 @@
 package wejsciowka01.example.shdemo.domain;
 
 public class Chair {
-	
-	private ChairManager chm;
+
 	
 	public String chairName;
 	public double chairPrice;
 	public boolean chair_on_stock;
+	
+	public Chair(){
+		
+	}
 	
 	public Chair(String chairName, double chairPrice)
 	{

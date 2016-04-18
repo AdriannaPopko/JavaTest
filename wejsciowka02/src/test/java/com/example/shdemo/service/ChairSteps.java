@@ -8,32 +8,40 @@ import org.jbehave.core.annotations.When;
 
 import wejsciowka01.example.shdemo.domain.Chair;
 import wejsciowka01.example.shdemo.domain.ChairManager;
-import wejsciowka01.example.shdemo.domain.IList;
+
 
 public class ChairSteps {
 	
-	private Chair chair;
-	private ChairManager chm = new ChairManager(IList list);
+	private ChairManager chairmanager;
+	private Chair chair1 = new Chair("Name", 50);
+	private Chair testchair = new Chair();
 	
 	@Given("a chair")
-	public void chairSetup(){
-		chair = new Chair("bujane",50);
+	public void bookSetup(){
+		chairmanager = new ChairManager();
 	}
-	
-	@When("set arguments to $chair and $50")
-	public void setArguments(String a, double b){
-		chair.setName(a);
-		chair.setPrice(b);
-	}
-	
-    @Then("adding should return $result")
-	public void shouldAdd(int result){
-		assertEquals(result, chair.addNewChair());
-	}
-    
-    @Then("deleting should return $result")
-  	public void shoulDelete(int result){
-  		assertEquals(result, chair.deleteChair());
-  	}
 
+	@When("received chair name $chairName")
+	public void setArguments(String chairName){
+		testchair.chairName = chairName;
+	}
+		
+	@Then("addChair should add $result")
+	public void shouldAdd(String result){
+		chairmanager.addChair(testchair);
+		assertEquals(result, chairmanager.chairs.get(0).getName());
+	}
+	
+	@Then("deleteChair should delete $result")
+	public void shouldDelete(String result){
+		chairmanager.addChair(chair1);
+		chairmanager.addChair(testchair);
+		int size = chairmanager.getSize();
+		
+		chairmanager.deleteChair(testchair);
+		int size2 = chairmanager.getSize();
+		
+		assertEquals(chair1.chairName, chairmanager.chairs.get(0).getName());
+		assertEquals(size, size2+1);
+	}
 }
