@@ -1,78 +1,36 @@
 package com.example.shdemo.service;
+import wejsciowka01.example.shdemo.domain.ChairManager;
 import wejsciowka01.example.shdemo.domain.IList;
 import wejsciowka01.example.shdemo.domain.Chair;
-import wejsciowka01.example.shdemo.service.ChairManager;
-import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.jbehave.core.configuration.Configuration;
+import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.io.LoadFromClasspath;
+import org.jbehave.core.junit.JUnitStory;
+import org.jbehave.core.reporters.Format;
+import org.jbehave.core.reporters.StoryReporterBuilder;
+import org.jbehave.core.steps.InjectableStepsFactory;
+import org.jbehave.core.steps.InstanceStepsFactory;
 
-import org.junit.Test;
+public class ChairManagerTest extends JUnitStory {
 
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
-
-import org.junit.Before;
-import org.junit.Test;
-
-public class ChairManagerTest {
-
-
-	private static final String name1="Krzesło biurowe";
-	private static final double price1=140;
-	private static final String name2="Krzesło bujane";
-	private static final double price2=200;
-	
-	private ChairManager chairManager;
-	private IList mock;
-	private Chair chair = new Chair(name1,price1);
-	private Chair chair2 = new Chair(name2,price2);
-	private List<Chair> chairs = new ArrayList<Chair>();
-	
-	@Before
-	public void setUp() {
-		mock = createMock(IList.class);
-		chairManager = new ChairManager(mock);
+	// Here we specify the configuration, starting from default
+	// MostUsefulConfiguration, and changing only what is needed
+	@Override
+	public Configuration configuration() {
+		return new MostUsefulConfiguration()
+		// where to find the stories
+				.useStoryLoader(new LoadFromClasspath(this.getClass()))
+				// CONSOLE and TXT reporting
+				.useStoryReporterBuilder(
+						new StoryReporterBuilder().withDefaultFormats()
+								.withFormats(Format.CONSOLE, Format.TXT));
 	}
-	
-	
-	@Test
-	public void checkAdding() {
-		expect(mock.addNewChair(chair)).andReturn(true).atLeastOnce();
-		replay(mock);
-		assertTrue(chairManager.addNewChair(chair));
-		verify(mock);
+
+	// Here we specify the steps classes
+	@Override
+	public InjectableStepsFactory stepsFactory() {
+		// varargs, can have more that one steps classes
+		return new InstanceStepsFactory(configuration(), new ChairSteps());
 	}
-	
-	
-	@Test
-	public void checkDeleting() {
-		expect(mock.deleteChair(chair)).andReturn(true).atLeastOnce();
-		replay(mock);
-		assertTrue(chairManager.deleteChair(chair));
-		verify(mock);
-	}
-	
-	@Test
-	public void checkGetAll() {
-		chairs.add(chair);
-		chairs.add(chair2);		
-		expect(mock.getAll()).andReturn(chairs);
-		replay(mock);
-		assertEquals(chairs, chairManager.getAllChairs());
-		verify(mock);
-	}
-	
-	@Test
-	public void checkGetByChairName() {
-		expect(mock.getByName(name1)).andReturn(chair);
-		replay(mock);
-		assertEquals(chair, chairManager.getByName(name1));
-		verify(mock);
-	}
-	
-	
-	
 }
