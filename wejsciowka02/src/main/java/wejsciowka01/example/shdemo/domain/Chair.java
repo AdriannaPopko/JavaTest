@@ -1,10 +1,15 @@
 package wejsciowka01.example.shdemo.domain;
 
 public class Chair {
+
 	
 	public String chairName;
 	public double chairPrice;
 	public boolean chair_on_stock;
+	
+	public Chair(){
+		
+	}
 	
 	public Chair(String chairName, double chairPrice)
 	{
@@ -29,7 +34,5 @@ public class Chair {
 	public void setPrice(double chairPrice) {
 		this.chairPrice = chairPrice;
 	}
-
-	
 
 }
