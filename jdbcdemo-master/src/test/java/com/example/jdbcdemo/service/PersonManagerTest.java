@@ -65,15 +65,27 @@ public class PersonManagerTest {
 	
 	@Test
 	public void checkDelete() {
-		Person opiekun = new Person(NAME_1, YOB_1);
+		Person person = new Person(NAME_1, YOB_1);
 
 		personManager.clearPersons();
-		assertEquals(1,personManager.addPerson(opiekun));
+		assertEquals(1,personManager.addPerson(person));
 
 		List<Person> persons = personManager.getAllPersons();
 		Person personRetrieved = persons.get(0);
 
 		assertEquals(1, personManager.deletePerson(personRetrieved));
+
+	}
+	
+	@Test
+	public void checkGetAllPersons() {
+		Person person = new Person(NAME_1, YOB_1);
+
+		personManager.clearPersons();
+		assertEquals(1,personManager.addPerson(person));
+
+		List<Person> persons = personManager.getAllPersons();
+		Person personRetrieved = persons.get(0);
 
 	}
 
