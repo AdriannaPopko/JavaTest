@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <PET P_ID="0" NAME="Molly" SPECIES="Kot"/>
+  <PET P_ID="1" NAME="Arryn" SPECIES="Krolik"/>
+  <PET P_ID="2" NAME="Bartek" SPECIES="Pies"/>
+  <PET P_ID="3" NAME="Brytan" SPECIES="Pies"/>
+  
+</dataset>
