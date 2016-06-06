@@ -92,7 +92,7 @@
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Adding Pets" enabled="true">
           <stringProp name="dataSource">myBase</stringProp>
           <stringProp name="queryType">Update Statement</stringProp>
-          <stringProp name="query">INSERT INTO Pet(NAME, SPECIES) VALUES (&apos;${NAME_1}&apos;, &apos;${SPECIES_1}&apos;, 1), (&apos;${NAME_2}&apos;, &apos;${SPECIES_2}&apos;, 1);</stringProp>
+          <stringProp name="query">INSERT INTO Pet(NAME, SPECIES, P_ID) VALUES (&apos;${NAME_1}&apos;, &apos;${SPECIES_1}&apos;, 1), (&apos;${NAME_2}&apos;, &apos;${SPECIES_2}&apos;, 2);</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="variableNames"></stringProp>
@@ -138,7 +138,7 @@
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="1329970139">1 updates</stringProp>
+              <stringProp name="1982616391">Bartek</stringProp>
             </collectionProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
@@ -184,7 +184,7 @@
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Check Delete Pet" enabled="true">
           <stringProp name="dataSource">myBase</stringProp>
           <stringProp name="queryType">Select Statement</stringProp>
-          <stringProp name="query">SELECT * FROM Pet;</stringProp>
+          <stringProp name="query">SELECT p_id=1 FROM Pet;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="variableNames"></stringProp>
@@ -195,12 +195,12 @@
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="1413420040">${NAME_2}</stringProp>
-              <stringProp name="-2138612571">${SPECIES_2}</stringProp>
+              <stringProp name="1413420009">${NAME_1}</stringProp>
+              <stringProp name="-2138612602">${SPECIES_1}</stringProp>
             </collectionProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">2</intProp>
+            <intProp name="Assertion.test_type">6</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
