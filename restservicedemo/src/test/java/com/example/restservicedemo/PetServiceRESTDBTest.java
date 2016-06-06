@@ -57,8 +57,8 @@ public class PetServiceRESTDBTest {
 	@Test
 	public void addPet() throws Exception{
 	
-		Pet aPerson = new Pet("Putin", "Mysz");
-		given().contentType(MediaType.APPLICATION_JSON).body(aPerson)
+		Pet aPet = new Pet("Putin", "Mysz");
+		given().contentType(MediaType.APPLICATION_JSON).body(aPet)
 				.when().post("/pet/").then().assertThat().statusCode(201);
 		
 		IDataSet dbDataSet = connection.createDataSet();
@@ -67,7 +67,7 @@ public class PetServiceRESTDBTest {
 				(actualTable, new String[]{"P_ID"});
 		
 		IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(
-				new File("src/test/resources/personData.xml"));
+				new File("src/test/resources/petData.xml"));
 		ITable expectedTable = expectedDataSet.getTable("PET");
 		
 		Assertion.assertEquals(expectedTable, filteredTable);
