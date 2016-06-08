@@ -3,6 +3,9 @@ package com.example.restservicedemo;
 import static com.jayway.restassured.RestAssured.*;
 import static com.jayway.restassured.path.json.JsonPath.from;
 import static junit.framework.TestCase.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
 
@@ -33,22 +36,25 @@ public class PetManagerRestTest{
 		get("/pet/0").then().assertThat().body("name", equalTo("Molly"));
 
 		Pet aPet = get("/pet/0").as(Pet.class);
-		assertEquals("Kot", aPet.getSpecies());
+		assertThat(aPet.getName(), equalToIgnoringCase("Molly"));
+		//assertEquals("Kot", aPet.getSpecies());
 	}
 
 	@Test
 	public void addPet(){
 
-		delete("/pet/").then().assertThat().statusCode(200);
+		//delete("/pet/").then().assertThat().statusCode(200);
 
 		Pet aPet = new Pet("Molly", "Kot");
 		given().
 				contentType(MediaType.APPLICATION_JSON).
 				body(aPet).
 				when().
-				post("/pet/add").then().assertThat().statusCode(201);
-		System.out.println(aPet.getId());
-		get("/pet/0").then().assertThat().body("name", equalTo("Molly"));
+				post("/pet/").then().assertThat().statusCode(201).body(containsString("Pet saved:"));
+				//post("/pet/add").then().assertThat().statusCode(201);
+		//System.out.println(aPet.getId());
+		//get("/pet/0").then().assertThat().body("name", equalTo("Molly"));
+		
 	}
 
 	@Test
