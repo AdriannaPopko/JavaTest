@@ -32,25 +32,17 @@ public class PetManagerRestTest{
 	PetManager pm = new PetManager();
 
 	@Test
-	public void getPet(){
-		get("/pet/0").then().assertThat().body("name", equalTo("Molly"));
-
-		Pet aPet = get("/pet/0").as(Pet.class);
-		assertThat(aPet.getName(), equalToIgnoringCase("Molly"));
-		//assertEquals("Kot", aPet.getSpecies());
-	}
-
-	@Test
 	public void addPet(){
 
 		//delete("/pet/").then().assertThat().statusCode(200);
 
 		Pet aPet = new Pet("Molly", "Kot");
+		
 		given().
 				contentType(MediaType.APPLICATION_JSON).
 				body(aPet).
 				when().
-				post("/pet/").then().assertThat().statusCode(201).body(containsString("Pet saved:"));
+				post("/pet/").then().assertThat().statusCode(201);
 				//post("/pet/add").then().assertThat().statusCode(201);
 		//System.out.println(aPet.getId());
 		//get("/pet/0").then().assertThat().body("name", equalTo("Molly"));
